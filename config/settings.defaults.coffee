@@ -8,4 +8,5 @@ module.exports =
 			host: process.env["LISTEN_ADDRESS"] or "localhost"
 
 	mongo:
-		url: process.env['MONGO_CONNECTION_STRING'] or "mongodb://#{process.env["MONGO_HOST"] or "localhost"}/sharelatex"
+		url: #config here should be automatically passed in
+      "mongodb://172.27.0.1:27017/sharelatex"

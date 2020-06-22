@@ -9,4 +9,4 @@ module.exports =
 
 	mongo:
 		url: #config here should be automatically passed in
-      "mongodb://172.27.0.1:27017/sharelatex"
+      "mongodb://172.17.0.1:27017/sharelatex"

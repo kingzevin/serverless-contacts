@@ -77,7 +77,7 @@
     //  method: 'get',
     // }
   
-    const url = params.__ow_path || '/user/5e9723ee71ffbe00909ed452/contacts';
+    const url = params.__ow_path || '/user/5ec7b3d14857fc00a946704b/contacts';
     const method = params.__ow_method || 'get';
   
     const { promisify } = require('util')

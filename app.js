@@ -60,68 +60,35 @@
 
   host = Settings.internal.contacts.host;
 
-  if (!module.parent) {
+  // if (!module.parent) {
     app.listen(port, host, function(error) {
       if (error != null) {
         throw error;
       }
       return logger.info("contacts starting up, listening on " + host + ":" + port);
     });
-  }
+  // }
 
-  exports.main = pure
-  
-  function pure(params = {}) {
-    function route(url, bodyJSON) {
-      return new Promise((resolve, reject) => {
-        app.runMiddleware(url, bodyJSON, (code, data) => {
-          if (code == 200)
-            resolve({ body: data });
-          else
-            reject({ body: { code, data } })
-        })
-      });
-    }
-  
-    return (async () => {
-      let result = await route(params.__ow_path, { method: params.__ow_method, body: params });
-      return result
-    })();
-  }
-  
-  if (!module.parent) {
-    (async ()=>{
-      let a = await test();
-      console.log(a);
-    })();
-  }
+  exports.main = test
 
   function test(params = {}) {
     // params e.g.: {
-    //  url: '/user/5dea50e08912bd02137651c2/check',
-    //  method: 'post',
-    //  words: ["yess", "sharelatex"],
-    //  language: 'en'
+    //  url: '/user/5e9723ee71ffbe00909ed452/contacts',
+    //  method: 'get',
     // }
   
-    const url = params.url || '/user/5e9723ee71ffbe00909ed452/contacts';
+    const url = params.__ow_path || '/user/5e9723ee71ffbe00909ed452/contacts';
     const method = params.__ow_method || 'get';
-    params.words = params.words || ["yess", "zevina"];
-    params.word = params.word || "yess";
   
-    function invoke(url, bodyJSON) {
-      return new Promise((resolve, reject) => {
-        app.runMiddleware(url, bodyJSON, (code, data) => {
-          if(code == 200)
-            resolve({body:data });
-          else 
-            reject({body: {code, data}})
-        })
-      });
-    }
+    const { promisify } = require('util')
+    const request = require("request")
+    const reqPromise = promisify(request[method]);
   
     return (async () => {
-      let result = await invoke(url, { method, body: params });
+      const result = await reqPromise({
+        url: `http://${host}:${port}${url}`,
+        json: params
+      })
       return result
     })();
   }

@@ -1,5 +1,5 @@
 {
-  "name": "contacts-zevin",
+  "name": "serverless-contacts",
   "author": "Zevin",
   "description": "A JSON API for Serverless",
   "main": "app.js",

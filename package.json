@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "An API for tracking contacts of a user",
   "author": "ShareLaTeX <team@sharelatex.com>",
-  "main": "app.js",
+  "main": "handler.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/sharelatex/contacts-sharelatex.git"

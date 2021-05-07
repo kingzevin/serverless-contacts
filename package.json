@@ -31,7 +31,7 @@
     "mongojs": "2.4.0",
     "request": "~2.34.0",
     "settings-sharelatex": "^1.1.0",
-    "underscore": "~1.6.0"
+    "underscore": "~1.12.1"
   },
   "devDependencies": {
     "bunyan": "~0.22.3",
